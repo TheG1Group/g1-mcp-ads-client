@@ -1,0 +1,49 @@
+{
+	"name": "@theg1team/mcp-ads-client",
+	"version": "0.1.0",
+	"description": "MCP Ads SDK (JS/TS). Implements g1.network mcp-ads-v1.0 spec — OAuth client_credentials JWT auth + ads_serve_for_context + server-side render-confirm POST. Universal target (Node 18+ + modern browsers). OSS MIT.",
+	"keywords": ["g1-network", "mcp", "ads", "llm", "claude", "ai-agent", "openrtb"],
+	"author": "The G1 Team <adops@g1.network>",
+	"license": "MIT",
+	"homepage": "https://oss.g1.network/mcp-ads-client",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/TheG1Team/g1-mcp-ads-client.git",
+		"directory": "packages/js"
+	},
+	"bugs": {
+		"url": "https://github.com/TheG1Team/g1-mcp-ads-client/issues"
+	},
+	"type": "module",
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs"
+		}
+	},
+	"files": ["dist", "README.md", "LICENSE"],
+	"sideEffects": false,
+	"scripts": {
+		"build": "tsup src/index.ts --format esm,cjs --dts --clean --target es2020",
+		"dev": "tsup src/index.ts --format esm,cjs --dts --watch",
+		"typecheck": "tsc --noEmit",
+		"test": "vitest run",
+		"prepublishOnly": "pnpm build"
+	},
+	"devDependencies": {
+		"tsup": "^8.0.0",
+		"typescript": "^5.7.0",
+		"vitest": "^2.1.0"
+	},
+	"engines": {
+		"node": ">=18"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org"
+	}
+}

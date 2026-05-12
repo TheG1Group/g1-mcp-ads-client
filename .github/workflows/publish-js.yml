@@ -1,0 +1,31 @@
+name: Publish @theg1team/mcp-ads-client (JS)
+
+on:
+  push:
+    tags:
+      - "js-v*"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: pnpm
+          registry-url: "https://registry.npmjs.org"
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @theg1team/mcp-ads-client typecheck
+      - run: pnpm --filter @theg1team/mcp-ads-client test
+      - run: pnpm --filter @theg1team/mcp-ads-client build
+      - name: Publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm --filter @theg1team/mcp-ads-client publish --no-git-checks --access public
