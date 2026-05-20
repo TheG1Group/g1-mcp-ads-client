@@ -8,11 +8,11 @@
 	"homepage": "https://oss.g1.network/mcp-ads-client",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/TheG1Team/g1-mcp-ads-client.git",
+		"url": "https://github.com/TheG1Group/g1-mcp-ads-client.git",
 		"directory": "packages/js"
 	},
 	"bugs": {
-		"url": "https://github.com/TheG1Team/g1-mcp-ads-client/issues"
+		"url": "https://github.com/TheG1Group/g1-mcp-ads-client/issues"
 	},
 	"type": "module",
 	"main": "./dist/index.cjs",
